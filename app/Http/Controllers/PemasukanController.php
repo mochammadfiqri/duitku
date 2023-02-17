@@ -80,11 +80,6 @@ class PemasukanController extends Controller
             echo $err;
         }
     }
-    
-    // public function delete($id)
-    // {
-    //     return view('Pemasukan.hapus');
-    // }
 
     public function destroy($id)
     {
