@@ -5,23 +5,22 @@ namespace App\Http\Controllers;
 use App\Models\Modelpemasukan;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
-use PhpParser\Node\Stmt\TryCatch;
+//use PhpParser\Node\Stmt\TryCatch;
 use Throwable;
 
 class PemasukanController extends Controller
 {
-    public function indexpemasukan()
+    public function indexpemasukan(Request $request)
     {
+        $search = $request->search;
         $data = [
-            'dataPemasukan' => Modelpemasukan::paginate(10) //select * from pemasukan
+            'dataPemasukan' => Modelpemasukan::where('jenis_pemasukan', 'like', '%'.$search.'%')
+            ->orWhere('nominal', 'like', '%'.$search.'%')
+            ->orWhere('keterangan', 'like', '%'.$search.'%')
+            ->paginate(10) //select * from pemasukan
         ];
         return view('Pemasukan.indexpemasukan', $data);
     }
-
-    // public function create()
-    // {
-    //     return view('Pemasukan.formtambah');
-    // }
 
     public function store(Request $request)
     {
@@ -36,29 +35,7 @@ class PemasukanController extends Controller
                 Session::flash('msgAdd', 'Data Pemasukan berhasil di simpan!');
             }
             return redirect('/pemasukan/indexpemasukan');
-        // try {
-        //     // $pemasukan = Modelpemasukan::create($request->all());
-        //     $pemasukan = new Modelpemasukan();
-        //     $pemasukan->nominal = $request->nominal;
-        //     $pemasukan->jenis_pemasukan = $request->jenis_pemasukan;
-        //     $pemasukan->tanggal = $request->tanggal;
-        //     $pemasukan->keterangan = $request->keterangan;
-        //     $pemasukan->save();
-        //     if($pemasukan) {
-        //         Session::flash('statusAdd', 'success');
-        //         Session::flash('msgAdd', 'Data Pemasukan berhasil di simpan!');
-        //     }
-        //     return redirect('/pemasukan/indexpemasukan');
-        // } catch (Throwable $err) {
-        //     echo $err;
-        // }
     }
-
-    // public function edit(Request $request, $id)
-    // {
-    //     $pemasukan = Modelpemasukan::findorfail($id);
-    //     return view('Pemasukan.edit', ['pemasukan' => $pemasukan]);
-    // }
 
     public function update(Request $request, $id)
     {
