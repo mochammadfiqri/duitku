@@ -89,11 +89,8 @@
                             <td>{{ $data->keterangan }}</td>
                             <td>{{ $data->tanggal }}</td>
                             <td>
-                                {{-- <a href="/pemasukan/edit/{{ $data->id }}" class="edit" title="Edit" data-toggle="tooltip"><i class="material-icons">&#xE254;</i></a> --}}
-                                {{-- <a href="#" data-bs-toggle="modal" data-bs-target="#modalEditPemasukan{{ $data->id }}" class="edit" title="Edit" data-toggle="tooltip"><i class="material-icons">&#xE254;</i></a> --}}
                                 <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#modalEditPemasukan{{ $data->id }}"><i class="fas fa-edit"></i></button>
                                 @include('Pemasukan.edit')
-                                {{-- <a href="/pemasukan/hapus/{{ $data->id }}" class="delete" title="Delete" data-toggle="tooltip"><i class="material-icons">&#xE872;</i></a> --}}
                                 <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#modalHapusPemasukan{{ $data->id }}"><i class="fas fa-trash-alt"></i></button>
                                 @include('Pemasukan.hapus')
                             </td>
