@@ -6,23 +6,20 @@ use App\Http\Controllers\PemasukanController;
 use App\Http\Controllers\PengeluaranController;
 use Illuminate\Routing\RouteGroup;
 
-//Route::get('/', [DashboardController::class, 'index']);
-
-Route::controller(DashboardController::class)->group(function(){
-    Route::get('/dashboard','index');
+Route::prefix('dashboard')->name('dashboard.')->group(function () {
+    Route::get('/', [DashboardController::class, 'index'])->name('index');
 });
 
-Route::controller(PemasukanController::class)->group(function(){
-    Route::get('/pemasukan','indexpemasukan');
-    Route::post('/pemasukan', 'App\Http\Controllers\PemasukanController@store');
-    Route::put('/pemasukan-edit/{Modelpemasukan}', 'App\Http\Controllers\PemasukanController@update');
-    Route::delete('/pemasukan-hapus/{Modelpemasukan}', 'App\Http\Controllers\PemasukanController@destroy');
+Route::prefix('pemasukan')->name('pemasukan.')->group(function () {
+    Route::get('/', [PemasukanController::class, 'indexpemasukan'])->name('index');
+    Route::post('/', [PemasukanController::class, 'store'])->name('store');
+    Route::put('/{Modelpemasukan}', [PemasukanController::class, 'update'])->name('update');
+    Route::delete('/{Modelpemasukan}', [PemasukanController::class, 'destroy'])->name('destroy');
 });
 
-Route::controller(PengeluaranController::class)->group(function(){
-    Route::get('/pengeluaran','indexpengeluaran');
-    Route::post('/pengeluaran', 'App\Http\Controllers\PengeluaranController@store');
-    Route::put('/pengeluaran-edit/{Modelpengeluaran}', 'App\Http\Controllers\PengeluaranController@update');
-    Route::delete('/pengeluaran-hapus/{Modelpengeluaran}', 'App\Http\Controllers\PengeluaranController@destroy');
+Route::prefix('pengeluaran')->name('pengeluaran.')->group(function () {
+    Route::get('/', [PengeluaranController::class, 'indexpengeluaran'])->name('index');
+    Route::post('/', [PengeluaranController::class, 'store'])->name('store');
+    Route::put('/{Modelpengeluaran}', [PengeluaranController::class, 'update'])->name('update');
+    Route::delete('/{Modelpengeluaran}', [PengeluaranController::class, 'destroy'])->name('destroy');
 });
-

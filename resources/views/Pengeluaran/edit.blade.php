@@ -6,7 +6,7 @@
         <h5 class="modal-title fs-5" id="staticBackdropLabel">Edit <b>Pengeluaran</b></h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
     </div>
-    <form action="/pengeluaran-edit/{{ $data->id }}" method="POST">
+    <form action="/pengeluaran/{{ $data->id }}" method="POST">
         <div class="modal-body">
                 @csrf
                 @method('PUT')
