@@ -31,17 +31,15 @@ class PemasukanController extends Controller
         $tambah_pemasukan->keterangan = $request->tambahKeterangan;
         $tambah_pemasukan->save();
             if($tambah_pemasukan) {
-                Session::flash('statusAdd', 'success');
+                Session::flash('statusAdd', 'Success');
                 Session::flash('msgAdd', 'Data Pemasukan berhasil di simpan!');
             }
-            return redirect('/pemasukan/indexpemasukan');
+            return redirect('/pemasukan');
     }
 
     public function update(Request $request, $id)
     {
         try {
-            // $pemasukan = Modelpemasukan::findorfail($id);
-            // $pemasukan->update($request->all());
             $update_pemasukan = Modelpemasukan::find($id);
             $update_pemasukan->nominal = $request->updateNominal;
             $update_pemasukan->jenis_pemasukan = $request->updateJenis_pemasukan;
@@ -52,7 +50,7 @@ class PemasukanController extends Controller
                 Session::flash('statusUpdate', 'success');
                 Session::flash('msgUpdate', 'Data Pemasukan berhasil di update!');
             }
-            return redirect('/pemasukan/indexpemasukan');
+            return redirect('/pemasukan');
         } catch (Throwable $err) {
             echo $err;
         }
@@ -65,6 +63,6 @@ class PemasukanController extends Controller
                 Session::flash('statusDelete', 'success');
                 Session::flash('msgDelete', 'Data Pemasukan berhasil di hapus!');
             }
-            return redirect('/pemasukan/indexpemasukan');
+            return redirect('/pemasukan');
     }
 }

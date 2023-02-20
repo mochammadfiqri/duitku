@@ -23,7 +23,7 @@
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
           <li class="nav-item">
-            <a href="{{ url('/dashboard/index') }}" class="nav-link">
+            <a href="{{ url('/dashboard') }}" class="nav-link">
               <i class="nav-icon fas fa-tachometer-alt"></i>
               <p>
                 Dashboard
@@ -32,13 +32,13 @@
             </a>
           </li>
           <li class="nav-item"> 
-            <a href="{{ url('/pemasukan/indexpemasukan') }}" class="nav-link">
+            <a href="{{ url('/pemasukan') }}" class="nav-link">
               <i class="nav-icon fas fa-arrow-circle-right"></i>
               <p>Pemasukan</p>
             </a>
           </li>
           <li class="nav-item">
-            <a href="#" class="nav-link">
+            <a href="{{ url('/pengeluaran') }}" class="nav-link">
               <i class="nav-icon fas fa-arrow-circle-left"></i>
               <p>Pengeluaran</p>
             </a>
