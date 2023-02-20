@@ -57,6 +57,11 @@ class PengeluaranController extends Controller
 
     public function destroy($id)
     {
-        //
+        $hapus_pengeluaran = Modelpengeluaran::destroy($id);
+        if ($hapus_pengeluaran) {
+            Session::flash('statusDelete', 'Success');
+            Session::flash('msgDelete', 'Data Pengeluaran berhasil di hapus!');
+        }
+        return redirect('/pengeluaran');
     }
 }

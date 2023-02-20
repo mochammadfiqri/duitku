@@ -23,6 +23,6 @@ Route::controller(PengeluaranController::class)->group(function(){
     Route::get('/pengeluaran','indexpengeluaran');
     Route::post('/pengeluaran', 'App\Http\Controllers\PengeluaranController@store');
     Route::put('/pengeluaran-edit/{Modelpengeluaran}', 'App\Http\Controllers\PengeluaranController@update');
-    //Route::delete('/pengeluaran-hapus/{Modelpengeluaran}', 'App\Http\Controllers\PengeluaranController@destroy');
+    Route::delete('/pengeluaran-hapus/{Modelpengeluaran}', 'App\Http\Controllers\PengeluaranController@destroy');
 });
 
