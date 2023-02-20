@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Modelpengeluaran;
 use Illuminate\Support\Facades\Session;
+use Throwable;
 
 class PengeluaranController extends Controller
 {
@@ -35,46 +36,25 @@ class PengeluaranController extends Controller
         return redirect('/pengeluaran');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function update(Request $request, $id)
     {
-        //
+        try {
+            $update_pengeluaran = Modelpengeluaran::find($id);
+            $update_pengeluaran->nominal = $request->updateNominal;
+            $update_pengeluaran->jenis_pengeluaran = $request->updateJenis_pengeluaran;
+            $update_pengeluaran->tanggal = $request->updateTanggal;
+            $update_pengeluaran->keterangan = $request->updateKeterangan;
+            $update_pengeluaran->save();
+            if ($update_pengeluaran) {
+                Session::flash('statusUpdate', 'Success');
+                Session::flash('msgUpdate', 'Data Pengeluaran berhasil di update!');
+            }
+            return redirect('/pengeluaran');
+        } catch (Throwable $err) {
+            echo $err;
+        }
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function destroy($id)
     {
         //

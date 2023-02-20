@@ -89,8 +89,8 @@
                             <td>{{ $data->keterangan }}</td>
                             <td>{{ $data->tanggal }}</td>
                             <td>
-                                <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#modalEditPemasukan{{ $data->id }}"><i class="fas fa-edit"></i></button>
-                                @include('Pemasukan.edit')
+                                <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#modalEditPengeluaran{{ $data->id }}"><i class="fas fa-edit"></i></button>
+                                @include('Pengeluaran.edit')
                                 <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#modalHapusPemasukan{{ $data->id }}"><i class="fas fa-trash-alt"></i></button>
                                 @include('Pemasukan.hapus')
                             </td>
