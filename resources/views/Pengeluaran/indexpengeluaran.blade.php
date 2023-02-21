@@ -73,17 +73,20 @@
                     <thead>
                         <tr>
                             <th>#</th>
-                            <th>Nominal <i class="fa fa-sort"></i></th>
-                            <th>Jenis Pengeluaran <i class="fa fa-sort"></i></th>
+                            <th>@sortablelink('nominal', 'Nominal')</th>
+                            <th>Jenis Pengeluaran</th>
                             <th>Keterangan</th>
-                            <th>Tanggal <i class="fa fa-sort"></i></th>
+                            <th>@sortablelink('tanggal', 'Tanggal')</th>
                             <th>Actions</th>
                         </tr>
                     </thead>
                     <tbody>
+                        @php
+                            $nomor = 1 + (($dataPengeluaran->currentPage()-1) * $dataPengeluaran->perPage());
+                        @endphp
                         @foreach ($dataPengeluaran as $data)
                         <tr>
-                            <td>{{ $loop->iteration }}</td>
+                            <td>{{ $nomor++ }}</td>
                             <td>{{ $data->nominal }}</td>
                             <td>{{ $data->jenis_pengeluaran }}</td>
                             <td>{{ $data->keterangan }}</td>

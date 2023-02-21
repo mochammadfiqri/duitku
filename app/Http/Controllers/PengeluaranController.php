@@ -11,14 +11,29 @@ class PengeluaranController extends Controller
 {
     public function indexpengeluaran(Request $request)
     {
-        $search = $request->search;
-        $data = [
-            'dataPengeluaran' => Modelpengeluaran::where('jenis_pengeluaran', 'like', '%'.$search.'%')
+        $search = $request->query('search');
+
+        if (!empty($search)) {
+            $DataPengeluaran = Modelpengeluaran::where('jenis_pengeluaran', 'like', '%'.$search.'%')
             ->orWhere('nominal', 'like', '%'.$search.'%')
             ->orWhere('keterangan', 'like', '%'.$search.'%')
-            ->paginate(10) //select * from pengeluaran
-        ];
-        return view('Pengeluaran.indexpengeluaran', $data);
+            ->sortable()
+            ->paginate(10)->onEachSide(1)->fragment('pemasukan');
+        } else {
+            $DataPengeluaran = Modelpengeluaran::sortable()->paginate(10)->onEachSide(1)->fragment('pengeluaran');
+        }
+        return view('Pengeluaran.indexpengeluaran')->with([
+            'dataPengeluaran' => $DataPengeluaran,
+            'search' => $search,
+        ]);
+        // $search = $request->search;
+        // $data = [
+        //     'dataPengeluaran' => Modelpengeluaran::where('jenis_pengeluaran', 'like', '%'.$search.'%')
+        //     ->orWhere('nominal', 'like', '%'.$search.'%')
+        //     ->orWhere('keterangan', 'like', '%'.$search.'%')
+        //     ->paginate(10) //select * from pengeluaran
+        // ];
+        // return view('Pengeluaran.indexpengeluaran', $data);
     }
 
     public function store(Request $request)

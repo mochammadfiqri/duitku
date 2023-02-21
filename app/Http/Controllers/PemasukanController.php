@@ -12,7 +12,6 @@ class PemasukanController extends Controller
 {
     public function indexpemasukan(Request $request)
     {
-        // $search = $request->search;
         $search = $request->query('search');
 
         if (!empty($search)) {
@@ -24,14 +23,6 @@ class PemasukanController extends Controller
         } else {
             $DataPemasukan = Modelpemasukan::sortable()->paginate(10)->onEachSide(1)->fragment('pemasukan');
         }
-
-        // $data = [
-        //     'dataPemasukan' => Modelpemasukan::where('jenis_pemasukan', 'like', '%'.$search.'%')
-        //     ->orWhere('nominal', 'like', '%'.$search.'%')
-        //     ->orWhere('keterangan', 'like', '%'.$search.'%')
-        //     ->sortable()
-        //     ->paginate(10)->onEachSide(1)->fragment('pemasukan') //select * from pemasukan
-        // ];
         return view('Pemasukan.indexpemasukan')->with([
             'dataPemasukan' => $DataPemasukan,
             'search' => $search,

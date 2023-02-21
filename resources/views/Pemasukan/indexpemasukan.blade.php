@@ -73,7 +73,6 @@
                     <thead>
                         <tr>
                             <th>No</th>
-                            {{-- <th>Nominal <i class="fa fa-sort"></i></th> --}}
                             <th>@sortablelink('nominal', 'Nominal')</th>
                             <th>Jenis Pemasukan</th>
                             <th>Keterangan</th>
