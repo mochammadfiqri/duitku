@@ -6,6 +6,10 @@ use App\Http\Controllers\PemasukanController;
 use App\Http\Controllers\PengeluaranController;
 use Illuminate\Routing\RouteGroup;
 
+Route::get('/', function () {
+    return view('/dashboard/index');
+});
+
 Route::prefix('dashboard')->name('dashboard.')->group(function () {
     Route::get('/', [DashboardController::class, 'index'])->name('index');
 });

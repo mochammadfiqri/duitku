@@ -63,7 +63,7 @@
                             <form action="" method="get">
                                 <div class="search-box">
                                     <i class="material-icons">&#xE8B6;</i>
-                                    <input type="text" class="form-control" name="search" placeholder="Search&hellip;">
+                                    <input type="text" class="form-control" name="search" id="search" placeholder="Search&hellip;" autofocus="true" value="{{ $search }}">
                                 </div>
                             </form>
                         </div>
@@ -72,18 +72,22 @@
                 <table class="table table-striped table-hover table-bordered">
                     <thead>
                         <tr>
-                            <th>#</th>
-                            <th>Nominal <i class="fa fa-sort"></i></th>
-                            <th>Jenis Pemasukan<i class="fa fa-sort"></i></th>
+                            <th>No</th>
+                            {{-- <th>Nominal <i class="fa fa-sort"></i></th> --}}
+                            <th>@sortablelink('nominal', 'Nominal')</th>
+                            <th>Jenis Pemasukan</th>
                             <th>Keterangan</th>
-                            <th>Tanggal <i class="fa fa-sort"></i></th>
+                            <th>@sortablelink('tanggal', 'Tanggal')</th>
                             <th>Actions</th>
                         </tr>
                     </thead>
                     <tbody>
+                        @php
+                            $nomor = 1 + (($dataPemasukan->currentPage()-1) * $dataPemasukan->perPage());
+                        @endphp
                         @foreach ($dataPemasukan as $data)
                         <tr>
-                            <td>{{ $loop->iteration }}</td>
+                            <td>{{ $nomor++ }}</td>
                             <td>{{ $data->nominal }}</td>
                             <td>{{ $data->jenis_pemasukan }}</td>
                             <td>{{ $data->keterangan }}</td>
