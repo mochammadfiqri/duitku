@@ -31,6 +31,17 @@ class PemasukanController extends Controller
 
     public function store(Request $request)
     {
+        $validateData = $request->validate([
+            'tambahNominal' => 'required|numeric',
+            'tambahJenis_pemasukan' => 'required',
+            'tambahTanggal' => 'required',
+        ], [
+            'tambahNominal.required' => 'Nominal tidak boleh kosong',
+            'tambahNominal.numeric' => 'Nominal harus di isi dengan angka',
+            'tambahJenis_pemasukan.required' => 'Jenis Pemasukan tidak boleh kosong',
+            'tambahTanggal.required' => 'Tanggal tidak boleh kosong',
+        ]);
+
         $tambah_pemasukan = new Modelpemasukan;
         $tambah_pemasukan->nominal = $request->tambahNominal;
         $tambah_pemasukan->jenis_pemasukan = $request->tambahJenis_pemasukan;

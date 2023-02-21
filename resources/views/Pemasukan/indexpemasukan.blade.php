@@ -41,6 +41,15 @@
                     {{ Session::get('msgDelete') }}
                 </div>
             @endif
+            @if ($errors->any())
+            <div class="alert alert-danger" role="alert">
+                <ul>
+                    @foreach ($errors->all() as $error)
+                        <li><h5>{{ $error }}</h5></li>
+                    @endforeach
+                </ul>
+            </div>
+            @endif
         </div>
     </div>
     <!-- Table Daftar Pemasukan -->
@@ -87,7 +96,8 @@
                         @foreach ($dataPemasukan as $data)
                         <tr>
                             <td>{{ $nomor++ }}</td>
-                            <td>{{ $data->nominal }}</td>
+                            {{-- <td>{{ $data->nominal }}</td> --}}
+                            <td>@currency($data->nominal)</td>
                             <td>{{ $data->jenis_pemasukan }}</td>
                             <td>{{ $data->keterangan }}</td>
                             <td>{{ $data->tanggal }}</td>

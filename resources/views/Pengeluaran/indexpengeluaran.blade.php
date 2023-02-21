@@ -87,7 +87,8 @@
                         @foreach ($dataPengeluaran as $data)
                         <tr>
                             <td>{{ $nomor++ }}</td>
-                            <td>{{ $data->nominal }}</td>
+                            {{-- <td>{{ $data->nominal }}</td> --}}
+                            <td>@currency($data->nominal)</td>
                             <td>{{ $data->jenis_pengeluaran }}</td>
                             <td>{{ $data->keterangan }}</td>
                             <td>{{ $data->tanggal }}</td>
