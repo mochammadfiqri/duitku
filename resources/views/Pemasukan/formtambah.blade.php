@@ -13,21 +13,13 @@
                         <label class="col-form-label">Nominal</label>
                         <div class="input-group">
                         <span class="input-group-text">Rp.</span>
-                        <input type="number" placeholder="Masukan Nominal" class="form-control" name="tambahNominal" id="tambahNominal" autofocus="true">
-                        <script src="jquery.masknumber.js"></script>
-                        <script>
-                            $(document).ready(function(){
-                                $("#tambahNominal").keyup(function(){
-                                    $(this).maskNumber({integer: true, thousands: "."})
-                                })
-                            })
-                        </script>
+                        <input type="number" placeholder="Masukan Nominal" class="form-control" name="tambahNominal" id="tambahNominal" value="{{ old('tambahNominal') }}" autofocus="true">
                     </div>
                 <p>
                     <div class="mb-0">
                     <label class="form-label">Jenis Pemasukan</label>
                     <div class="input-group">
-                    <input type="text" placeholder="Masukan Jenis Pemasukan" class="form-control" name="tambahJenis_pemasukan" id="tambahJenis_pemasukan" value="{{ old('tambahNominal') }}">
+                    <input type="text" placeholder="Masukan Jenis Pemasukan" class="form-control" name="tambahJenis_pemasukan" id="tambahJenis_pemasukan" value="{{ old('tambahJenis_pemasukan') }}">
                 </div>
                 </p>
                 <p>
