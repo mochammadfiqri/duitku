@@ -16,7 +16,10 @@
         <!-- small box -->
         <div class="small-box bg-info">
             <div class="inner">
-            <h3>Rp. 1.000.000.,</h3>
+                @php
+                    $totalIncome = \App\Models\Modelpemasukan::totalIncome();
+                @endphp
+            <h3>@currency($totalIncome)</h3>
             <p>Total Pemasukan</p>
             </div>
             <div class="icon">
@@ -96,7 +99,6 @@
                         @foreach ($dataPemasukan as $data)
                         <tr>
                             <td>{{ $nomor++ }}</td>
-                            {{-- <td>{{ $data->nominal }}</td> --}}
                             <td>@currency($data->nominal)</td>
                             <td>{{ $data->jenis_pemasukan }}</td>
                             <td>{{ $data->keterangan }}</td>

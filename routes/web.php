@@ -12,15 +12,20 @@ Route::get('/', function () {
 
 Route::prefix('dashboard')->name('dashboard.')->group(function () {
     Route::get('/', [DashboardController::class, 'index'])->name('index');
+    Route::get('/', [DashboardController::class, 'pemasukanHariIni'])->name('pemasukanHariIni');
 });
 
+//Pemasukan
 Route::prefix('pemasukan')->name('pemasukan.')->group(function () {
     Route::get('/', [PemasukanController::class, 'indexpemasukan'])->name('index');
     Route::post('/', [PemasukanController::class, 'store'])->name('store');
     Route::put('/{Modelpemasukan}', [PemasukanController::class, 'update'])->name('update');
     Route::delete('/{Modelpemasukan}', [PemasukanController::class, 'destroy'])->name('destroy');
+
+    // Route::get('/', [PemasukanController::class, 'pemasukanHariIni'])->name('pemasukanHariIni');
 });
 
+//Pengeluaran
 Route::prefix('pengeluaran')->name('pengeluaran.')->group(function () {
     Route::get('/', [PengeluaranController::class, 'indexpengeluaran'])->name('index');
     Route::post('/', [PengeluaranController::class, 'store'])->name('store');

@@ -27,5 +27,7 @@ class AppServiceProvider extends ServiceProvider
     {
         Paginator::useBootstrapFive();
         Blade::directive('currency', function ( $expression ) { return "Rp. <?php echo number_format($expression,0,',','.'); ?>"; });
+        setlocale(LC_TIME, 'id_ID');
+        \Carbon\Carbon::setLocale('id_ID');
     }
 }

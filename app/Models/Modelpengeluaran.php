@@ -18,4 +18,9 @@ class Modelpengeluaran extends Model
     public $sortable = [
         'nominal','tanggal'
     ];
+
+    public static function totalOutcome()
+    {
+        return self::sum('nominal');
+    }
 }

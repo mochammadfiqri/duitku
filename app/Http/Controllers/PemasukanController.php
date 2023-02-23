@@ -10,6 +10,12 @@ use Throwable;
 
 class PemasukanController extends Controller
 {
+    // public function pemasukanHariIni()
+    // {
+    //     $pemasukanHariIni = ModelPemasukan::whereDate('tanggal', today())->sum('nominal');
+    //     return view('Dashboard.html', ['pemasukanHariIni' => $pemasukanHariIni]);
+    // }
+
     public function indexpemasukan(Request $request)
     {
         $search = $request->query('search');

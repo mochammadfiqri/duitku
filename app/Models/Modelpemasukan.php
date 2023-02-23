@@ -18,4 +18,9 @@ class Modelpemasukan extends Model
     public $sortable = [
         'nominal','tanggal'
     ];
+
+    public static function totalIncome()
+    {
+        return self::sum('nominal');
+    }
 }

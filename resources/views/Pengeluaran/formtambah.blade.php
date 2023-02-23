@@ -13,14 +13,14 @@
                         <label class="col-form-label">Nominal</label>
                         <div class="input-group">
                         <span class="input-group-text">Rp.</span>
-                        <input type="number" placeholder="Masukan Nominal" class="form-control" name="tambahNominal" id="tambahNominal" autofocus="true">
+                        <input type="number" placeholder="Masukan Nominal" class="form-control" name="tambahNominal" id="tambahNominal" value="{{ old('tambahNominal') }}" autofocus="true">
                     </div>
                 <p>
                     <div class="mb-0">
-                    <label class="form-label">Jenis Pengeluaran</label>
-                    <div class="input-group">
-                    <input type="text" placeholder="Masukan Jenis Pengeluaran" class="form-control" name="tambahJenis_pengeluaran" id="tambahJenis_pengeluaran" value="{{ old('tambahNominal') }}">
-                </div>
+                        <label class="form-label">Jenis Pengeluaran</label>
+                        <div class="input-group">
+                        <input type="text" placeholder="Masukan Jenis Pengeluaran" class="form-control" name="tambahJenis_pengeluaran" id="tambahJenis_pengeluaran" value="{{ old('tambahJenis_pengeluaran') }}">
+                    </div>
                 </p>
                 <p>
                     <div class="mb-0">
@@ -33,22 +33,6 @@
                     <label class="form-label">Keterangan</label>
                     <textarea placeholder="Masukan Keterangan" name="tambahKeterangan" id="tambahKeterangan" cols="10" rows="5" class="form-control">{{ old('tambahKeterangan') }}</textarea>
                 </div>
-                {{-- <div class="mb-0">
-                    <label><small>Nominal</small></label>
-                    <input type="text" placeholder="Masukan Nominal" name="tambahNominal" id="tambahNominal" class="form-control" required>
-                </div><br>
-                <div class="mb-0">
-                    <label><small>Jenis Pengeluaran</small></label>
-                    <input type="text" placeholder="Masukan Jenis Pengeluaran" name="tambahJenis_pengeluaran" id="tambahJenis_pengeluaran" class="form-control" required>
-                </div><br>
-                <div class="mb-0">
-                    <label><small>Tanggal</small></label>
-                    <input type="date" name="tambahTanggal" id="tambahTanggal" class="form-control" required>
-                </div><br>
-                <div class="mb-0">
-                    <label><small>Keterangan</small></label>
-                    <input type="text" placeholder="Masukan Keterangan" name="tambahKeterangan" id="tambahKeterangan" rows="4" class="form-control">
-                </div><br>  --}}
         </div>
         <div class="modal-footer">
             <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Batal</button>

@@ -16,7 +16,10 @@
         <!-- small box -->
         <div class="small-box bg-info">
             <div class="inner">
-            <h3>Rp. 1.000.000.,</h3>
+                @php
+                    $totalOutcome = \App\Models\Modelpengeluaran::totalOutcome();
+                @endphp
+            <h3>@currency($totalOutcome)</h3>
             <p>Total Pengeluaran</p>
             </div>
             <div class="icon">
@@ -63,7 +66,7 @@
                             <form action="" method="get">
                                 <div class="search-box">
                                     <i class="material-icons">&#xE8B6;</i>
-                                    <input type="text" class="form-control" name="search" placeholder="Search&hellip;">
+                                    <input type="text" class="form-control" name="search" placeholder="Search&hellip;" autofocus="true">
                                 </div>
                             </form>
                         </div>
@@ -72,7 +75,7 @@
                 <table class="table table-striped table-hover table-bordered">
                     <thead>
                         <tr>
-                            <th>#</th>
+                            <th>No</th>
                             <th>@sortablelink('nominal', 'Nominal')</th>
                             <th>Jenis Pengeluaran</th>
                             <th>Keterangan</th>

@@ -82,7 +82,7 @@ return [
     |
     */
 
-    'locale' => 'en',
+    'locale' => 'id_ID',
 
     /*
     |--------------------------------------------------------------------------
@@ -181,7 +181,9 @@ return [
         Illuminate\Translation\TranslationServiceProvider::class,
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
+
         \Kyslik\ColumnSortable\ColumnSortableServiceProvider::class,
+        Cknow\Money\MoneyServiceProvider::class,        
 
         /*
          * Package Service Providers...
@@ -211,6 +213,7 @@ return [
 
     'aliases' => Facade::defaultAliases()->merge([
         // 'ExampleClass' => App\Example\ExampleClass::class,
+        'Money' => Cknow\Money\MoneyFacade::class,
     ])->toArray(),
 
 ];

@@ -13,14 +13,14 @@
                         <label class="col-form-label">Nominal</label>
                         <div class="input-group">
                         <span class="input-group-text">Rp.</span>
-                        <input type="number" placeholder="Masukan Nominal" class="form-control" name="tambahNominal" id="tambahNominal" value="{{ old('tambahNominal') }}" autofocus="true">
+                        <input type="number" placeholder="Masukan Nominal" class="form-control" name="tambahNominal" id="tambahNominal" value="{{ old('tambahNominal') ? Money::IDR(old('tambahNominal')) : '' }}" autofocus="true">
                     </div>
                 <p>
                     <div class="mb-0">
-                    <label class="form-label">Jenis Pemasukan</label>
-                    <div class="input-group">
-                    <input type="text" placeholder="Masukan Jenis Pemasukan" class="form-control" name="tambahJenis_pemasukan" id="tambahJenis_pemasukan" value="{{ old('tambahJenis_pemasukan') }}">
-                </div>
+                        <label class="form-label">Jenis Pemasukan</label>
+                        <div class="input-group">
+                        <input type="text" placeholder="Masukan Jenis Pemasukan" class="form-control" name="tambahJenis_pemasukan" id="tambahJenis_pemasukan" value="{{ old('tambahJenis_pemasukan') }}">
+                    </div>
                 </p>
                 <p>
                     <div class="mb-0">
@@ -31,24 +31,8 @@
                 </p>
                 <div class="mb-0">
                     <label class="form-label">Keterangan</label>
-                    <textarea placeholder="Masukan Keterangan" name="tambahKeterangan" id="tambahKeterangan" cols="10" rows="5" class="form-control">{{ old('tambahKeterangan') }}</textarea>
+                    <textarea placeholder="Masukan Keterangan" name="tambahKeterangan" id="tambahKeterangan" cols="5" rows="5" class="form-control">{{ old('tambahKeterangan') }}</textarea>
                 </div>
-                {{-- <div class="mb-0">
-                    <label><small>Nominal</small></label>
-                    <input type="text" placeholder="Masukan Nominal" name="tambahNominal" id="tambahNominal" class="form-control form-control-sm" autofocus="true" value="{{ old('tambahNominal') }}">
-                </div>
-                <div class="mb-0">
-                    <label><small>Jenis Pemasukan</small></label>
-                    <input type="text" placeholder="Masukan Jenis Pemasukan" name="tambahJenis_pemasukan" id="tambahJenis_pemasukan" class="form-control form-control-sm" value="{{ old('tambahJenis_pemasukan') }}">
-                </div>
-                <div class="mb-0">
-                    <label><small>Tanggal</small></label>
-                    <input type="date" name="tambahTanggal" id="tambahTanggal" class="form-control form-control-sm" value="{{ old('tambahTanggal') }}">
-                </div>
-                <div class="mb-0">
-                    <label><small>Keterangan</small></label>
-                    <textarea placeholder="Masukan Keterangan" name="tambahKeterangan" id="tambahKeterangan" cols="10" rows="5" class="form-control form-control-sm">{{ old('tambahKeterangan') }}</textarea>
-                </div>  --}}
         </div>
         <div class="modal-footer">
             <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Batal</button>
