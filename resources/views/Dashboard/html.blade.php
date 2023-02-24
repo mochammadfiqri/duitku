@@ -4,23 +4,24 @@
       <div class="row">
         @php
           $today = \Carbon\Carbon::now()->locale('id');
+
           $totalPemasukanToday = app('App\Http\Controllers\DashboardController')->getTotalPemasukan('today');
           $totalPemasukanThisMonth = app('App\Http\Controllers\DashboardController')->getTotalPemasukan('this_month');
           $totalPemasukanThisYear = app('App\Http\Controllers\DashboardController')->getTotalPemasukan('this_year');
+          $totalIncome = \App\Models\Modelpemasukan::totalIncome();
+
           $totalPengeluaranToday = app('App\Http\Controllers\DashboardController')->getTotalPengeluaran('today');
           $totalPengeluaranThisMonth = app('App\Http\Controllers\DashboardController')->getTotalPengeluaran('this_month');
           $totalPengeluaranThisYear = app('App\Http\Controllers\DashboardController')->getTotalPengeluaran('this_year');
+          $totalOutcome = \App\Models\Modelpengeluaran::totalOutcome();
         @endphp
         <div class="col-lg-3 col-6">
           <!-- small box -->
-          <div class="small-box bg-info">
+          <div class="small-box bg-success">
             <div class="inner">
               <h4>@currency($totalPemasukanToday)</h4>
               <p>Hari {{ $today->format('l') }}</p>
             </div>
-            {{-- <div class="icon">
-              <i class="ion ion-bag"></i>
-            </div> --}}
             <a href="#" class="small-box-footer">Pemasukan Hari Ini</a>
           </div>
         </div>
@@ -33,39 +34,30 @@
 
               <p>Bulan {{ $today->format('F') }}</p>
             </div>
-            {{-- <div class="icon">
-              <i class="ion ion-stats-bars"></i>
-            </div> --}}
             <a href="#" class="small-box-footer">Pemasukan Bulan Ini</a>
           </div>
         </div>
         <!-- ./col -->
         <div class="col-lg-3 col-6">
           <!-- small box -->
-          <div class="small-box bg-warning">
+          <div class="small-box bg-success">
             <div class="inner">
               <h4>@currency($totalPemasukanThisYear)</h4>
 
               <p>Tahun {{ $today->format('Y') }}</p>
             </div>
-            {{-- <div class="icon">
-              <i class="ion ion-person-add"></i>
-            </div> --}}
             <a href="#" class="small-box-footer">Pemasukan Tahun Ini</a>
           </div>
         </div>
         <!-- ./col -->
         <div class="col-lg-3 col-6">
           <!-- small box -->
-          <div class="small-box bg-danger">
+          <div class="small-box bg-success">
             <div class="inner">
-              <h4><sup style="font-size: 20px">Rp.</sup> 0 ,-</h4>
+              <h4>@currency($totalIncome)</h4>
 
-              <p>Semua</p>
+              <p>Semua Waktu</p>
             </div>
-            {{-- <div class="icon">
-              <i class="ion ion-pie-graph"></i>
-            </div> --}}
             <a href="#" class="small-box-footer">Total Pemasukan</a>
           </div>
         </div>
@@ -77,47 +69,13 @@
       <div class="row">
         <div class="col-lg-3 col-6">
           <!-- small box -->
-          <div class="small-box bg-info">
+          <div class="small-box bg-danger">
             <div class="inner">
-              {{-- <h4>@currency($pengeluaranHariIni)</h4> --}}
               <h4>@currency($totalPengeluaranToday)</h4>
 
-              <p>Pengeluaran Hari Ini</p>
+              <p>Hari {{ $today->format('l') }}</p>
             </div>
-            {{-- <div class="icon">
-              <i class="ion ion-bag"></i>
-            </div> --}}
-            <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
-          </div>
-        </div>
-        <!-- ./col -->
-        <div class="col-lg-3 col-6">
-          <!-- small box -->
-          <div class="small-box bg-success">
-            <div class="inner">
-              <h4>@currency($totalPengeluaranThisMonth)</h4>
-
-              <p>Pengeluaran Bulan Ini</p>
-            </div>
-            {{-- <div class="icon">
-              <i class="ion ion-stats-bars"></i>
-            </div> --}}
-            <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
-          </div>
-        </div>
-        <!-- ./col -->
-        <div class="col-lg-3 col-6">
-          <!-- small box -->
-          <div class="small-box bg-warning">
-            <div class="inner">
-              <h4>@currency($totalPengeluaranThisYear)</h4>
-
-              <p>Pengeluaran Tahun Ini</p>
-            </div>
-            {{-- <div class="icon">
-              <i class="ion ion-person-add"></i>
-            </div> --}}
-            <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+            <a href="#" class="small-box-footer">Pengeluaran Hari Ini</a>
           </div>
         </div>
         <!-- ./col -->
@@ -125,14 +83,38 @@
           <!-- small box -->
           <div class="small-box bg-danger">
             <div class="inner">
-              <h4><sup style="font-size: 20px">Rp.</sup> 0 ,-</h4>
+              <h4>@currency($totalPengeluaranThisMonth)</h4>
 
-              <p>Total Pengeluaran</p>
+              <p>Bulan {{ $today->format('F') }}</p>
+            </div>
+            <a href="#" class="small-box-footer">Pengeluaran Bulan Ini</a>
+          </div>
+        </div>
+        <!-- ./col -->
+        <div class="col-lg-3 col-6">
+          <!-- small box -->
+          <div class="small-box bg-danger">
+            <div class="inner">
+              <h4>@currency($totalPengeluaranThisYear)</h4>
+
+              <p>Tahun {{ $today->format('Y') }}</p>
+            </div>
+            <a href="#" class="small-box-footer">Pengeluaran Tahun Ini</a>
+          </div>
+        </div>
+        <!-- ./col -->
+        <div class="col-lg-3 col-6">
+          <!-- small box -->
+          <div class="small-box bg-danger">
+            <div class="inner">
+              <h4>@currency($totalOutcome)</h4>
+
+              <p>Semua Waktu</p>
             </div>
             {{-- <div class="icon">
               <i class="ion ion-pie-graph"></i>
             </div> --}}
-            <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+            <a href="#" class="small-box-footer">Total Pengeluaran</a>
           </div>
         </div>
         <!-- ./col -->
