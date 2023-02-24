@@ -11,12 +11,6 @@ class DashboardController extends Controller
         return view('Dashboard.index');
     }
     
-    // public function pemasukanHariIni()
-    // {
-    //     $pemasukanHariIni = ModelPemasukan::whereDate('tanggal', today())->sum('nominal');
-    //     return view('Dashboard.index', ['pemasukanHariIni' => $pemasukanHariIni]);
-    // }
-
     public function getTotalPemasukan($timePeriod) {
         
         if ($timePeriod == 'today') {

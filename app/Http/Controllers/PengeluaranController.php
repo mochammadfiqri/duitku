@@ -26,14 +26,6 @@ class PengeluaranController extends Controller
             'dataPengeluaran' => $DataPengeluaran,
             'search' => $search,
         ]);
-        // $search = $request->search;
-        // $data = [
-        //     'dataPengeluaran' => Modelpengeluaran::where('jenis_pengeluaran', 'like', '%'.$search.'%')
-        //     ->orWhere('nominal', 'like', '%'.$search.'%')
-        //     ->orWhere('keterangan', 'like', '%'.$search.'%')
-        //     ->paginate(10) //select * from pengeluaran
-        // ];
-        // return view('Pengeluaran.indexpengeluaran', $data);
     }
 
     public function store(Request $request)

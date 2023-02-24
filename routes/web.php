@@ -14,7 +14,6 @@ Route::prefix('dashboard')->name('dashboard.')->group(function () {
     Route::get('/', [DashboardController::class, 'index'])->name('index');
     Route::get('/{timePeriod}', [DashboardController::class, 'getTotalPemasukan'])->name('getTotalPemasukan');
     Route::get('/{timePeriod}', [DashboardController::class, 'getTotalPengeluaran'])->name('getTotalPengeluaran');
-    // Route::get('/', [DashboardController::class, 'pemasukanHariIni'])->name('pemasukanHariIni');
 });
 
 //Pemasukan
