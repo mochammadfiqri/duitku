@@ -7,6 +7,9 @@
           $totalPemasukanToday = app('App\Http\Controllers\DashboardController')->getTotalPemasukan('today');
           $totalPemasukanThisMonth = app('App\Http\Controllers\DashboardController')->getTotalPemasukan('this_month');
           $totalPemasukanThisYear = app('App\Http\Controllers\DashboardController')->getTotalPemasukan('this_year');
+          $totalPengeluaranToday = app('App\Http\Controllers\DashboardController')->getTotalPengeluaran('today');
+          $totalPengeluaranThisMonth = app('App\Http\Controllers\DashboardController')->getTotalPengeluaran('this_month');
+          $totalPengeluaranThisYear = app('App\Http\Controllers\DashboardController')->getTotalPengeluaran('this_year');
         @endphp
         <div class="col-lg-3 col-6">
           <!-- small box -->
@@ -77,7 +80,7 @@
           <div class="small-box bg-info">
             <div class="inner">
               {{-- <h4>@currency($pengeluaranHariIni)</h4> --}}
-              <h4>0</h4>
+              <h4>@currency($totalPengeluaranToday)</h4>
 
               <p>Pengeluaran Hari Ini</p>
             </div>
@@ -92,7 +95,7 @@
           <!-- small box -->
           <div class="small-box bg-success">
             <div class="inner">
-              <h4><sup style="font-size: 20px">Rp.</sup> 0 ,-</h4>
+              <h4>@currency($totalPengeluaranThisMonth)</h4>
 
               <p>Pengeluaran Bulan Ini</p>
             </div>
@@ -107,7 +110,7 @@
           <!-- small box -->
           <div class="small-box bg-warning">
             <div class="inner">
-              <h4><sup style="font-size: 20px">Rp.</sup> 0 ,-</h4>
+              <h4>@currency($totalPengeluaranThisYear)</h4>
 
               <p>Pengeluaran Tahun Ini</p>
             </div>

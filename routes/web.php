@@ -13,6 +13,7 @@ Route::get('/', function () {
 Route::prefix('dashboard')->name('dashboard.')->group(function () {
     Route::get('/', [DashboardController::class, 'index'])->name('index');
     Route::get('/{timePeriod}', [DashboardController::class, 'getTotalPemasukan'])->name('getTotalPemasukan');
+    Route::get('/{timePeriod}', [DashboardController::class, 'getTotalPengeluaran'])->name('getTotalPengeluaran');
     // Route::get('/', [DashboardController::class, 'pemasukanHariIni'])->name('pemasukanHariIni');
 });
 
@@ -22,8 +23,6 @@ Route::prefix('pemasukan')->name('pemasukan.')->group(function () {
     Route::post('/', [PemasukanController::class, 'store'])->name('store');
     Route::put('/{Modelpemasukan}', [PemasukanController::class, 'update'])->name('update');
     Route::delete('/{Modelpemasukan}', [PemasukanController::class, 'destroy'])->name('destroy');
-
-    // Route::get('/', [PemasukanController::class, 'pemasukanHariIni'])->name('pemasukanHariIni');
 });
 
 //Pengeluaran
