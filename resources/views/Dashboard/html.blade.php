@@ -4,12 +4,15 @@
       <div class="row">
         @php
           $today = \Carbon\Carbon::now()->locale('id');
+          $totalPemasukanToday = app('App\Http\Controllers\DashboardController')->getTotalPemasukan('today');
+          $totalPemasukanThisMonth = app('App\Http\Controllers\DashboardController')->getTotalPemasukan('this_month');
+          $totalPemasukanThisYear = app('App\Http\Controllers\DashboardController')->getTotalPemasukan('this_year');
         @endphp
         <div class="col-lg-3 col-6">
           <!-- small box -->
           <div class="small-box bg-info">
             <div class="inner">
-              <h4>@currency($pemasukanHariIni)</h4>
+              <h4>@currency($totalPemasukanToday)</h4>
               <p>Hari {{ $today->format('l') }}</p>
             </div>
             {{-- <div class="icon">
@@ -23,7 +26,7 @@
           <!-- small box -->
           <div class="small-box bg-success">
             <div class="inner">
-              <h4><sup style="font-size: 20px">Rp.</sup> 0 ,-</h4>
+              <h4>@currency($totalPemasukanThisMonth)</h4>
 
               <p>Bulan {{ $today->format('F') }}</p>
             </div>
@@ -38,7 +41,7 @@
           <!-- small box -->
           <div class="small-box bg-warning">
             <div class="inner">
-              <h4><sup style="font-size: 20px">Rp.</sup> 0 ,-</h4>
+              <h4>@currency($totalPemasukanThisYear)</h4>
 
               <p>Tahun {{ $today->format('Y') }}</p>
             </div>
@@ -73,7 +76,8 @@
           <!-- small box -->
           <div class="small-box bg-info">
             <div class="inner">
-              <h4><sup style="font-size: 20px">Rp.</sup> 0 ,-</h4>
+              {{-- <h4>@currency($pengeluaranHariIni)</h4> --}}
+              <h4>0</h4>
 
               <p>Pengeluaran Hari Ini</p>
             </div>
